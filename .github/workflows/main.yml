@@ -1,0 +1,25 @@
+name: Fleet_Shipments_WS_DEV_CI
+
+##Bajo que situaciones corre el workflow
+on:
+  push:
+    branches:
+    - dev
+    paths-ignore:
+    - '.github/workflows/**'
+
+  workflow_dispatch:
+    
+env:
+  WebServiceName: Sales
+  system_debug: 'false'
+  
+##Bloque de ejecucion     
+jobs:
+  Phase_1:
+    name: Fleet - Shipments WS Deployment
+    runs-on: [Self-Hosted]
+    
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4.1.0
